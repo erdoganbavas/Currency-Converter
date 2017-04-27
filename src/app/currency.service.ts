@@ -58,6 +58,6 @@ export class CurrencyService {
   }
 
   getRatesOf(code: string) {
-    return this.http.get('http://api.fixer.io/latest?base=' + code);
+    return this.http.get('https://api.fixer.io/latest?base=' + code);
   }
 }
