@@ -7,17 +7,16 @@ import {Response} from '@angular/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   exchanges = [];
+
+  // Default values
   currentCurrency = 'EUR';
   currentAmount = 1;
 
-  constructor(private currencyService: CurrencyService) {
-    // this.exchanges = currencyService.getAllAsArray();
-  }
+  constructor(private currencyService: CurrencyService) {}
 
   ngOnInit() {
-    // İlk listelemeyi yaptıralım
     this.onCurrencyClick(this.currencyService.getData(this.currentCurrency));
   }
 
@@ -40,10 +39,10 @@ export class AppComponent implements OnInit{
 
     this.currencyService.getRatesOf(currency.code).subscribe(
       (response: Response) => {
-        // değerleri sıfırlasın
+        // reset
         this.exchanges = [];
 
-        // Gelen cevabı json nesnesine çevirelim
+        // Turn into a JSON object
         const responseJson = response.json();
 
         for (const ratedCode in responseJson.rates) {

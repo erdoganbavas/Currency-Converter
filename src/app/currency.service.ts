@@ -38,20 +38,7 @@ export class CurrencyService {
     'ZAR': {flag: 'http://www.ecb.europa.eu/shared/img/flags/ZAR.gif', code: 'ZAR', name: 'South African rand'}
   };
 
-  constructor(private http: Http) {
-
-  }
-
-  getAllAsArray() {
-    const dataAsArray = [];
-
-    for (const d in this.currencyData) {
-      if (this.currencyData.hasOwnProperty(d)) {
-        dataAsArray.push(this.currencyData[d]);
-      }
-    }
-    return dataAsArray;
-  }
+  constructor(private http: Http) {}
 
   getData(code: string) {
     return this.currencyData[code];
